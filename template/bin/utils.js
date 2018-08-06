@@ -69,15 +69,16 @@ exports.getEntries = function(extensions, options) {
 }
 
 const ImageNames = {
-  dev: 'img/[name].[ext]',
-  prod: 'img/[name]-[hash:7].[ext]'
+  dev: 'img/[path][name].[ext]',
+  prod: 'img/[path][name]-[hash:7].[ext]'
 }
 exports.getImageLoader = function(env, limit) {
   return {
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
     loader: 'url-loader',
     query: {
-      emitFile: true,
+      emitFile: false, // 这里只负责生成url, copy plugin负责拷贝图片
+      context: path.join(config.paths.src, 'img'),
       limit: limit || 10000,
       name: ImageNames[env]
     }
@@ -194,7 +195,7 @@ exports.getJadeLoaderPluginMaybeWithPlugin = function(withPlugin, env) {
           use: {
             loader: 'jade-url-replace-loader',
             options: {
-              attrs: ['a:href', 'img:src','script:src','link:href'],
+              attrs: ['a:href', 'img:src','script:src','link:href', 'video:src', 'source:src', 'audio:src', 'img:data-src'],
               getEmitedFilePath: function (url) {
                 if (env == 'dev') return url
                 if (!manifest) {
@@ -293,6 +294,7 @@ exports.getCopyPlugins = function (env, assetsPublicPath) {
       fs.writeFileSync(path.join(config[env].assetsRoot, 'manifest-img.json'), JSON.stringify(manifsetImg, null, 2))
       return content
     }
+  /* copy static files, add more if needed */
   }, {
     from: path.join(config.paths.src, 'css/lib'),
     to: path.join(config[env].assetsRoot, 'css/lib')
@@ -302,10 +304,13 @@ exports.getCopyPlugins = function (env, assetsPublicPath) {
   }, {
     from: path.join(config.paths.src, 'fonts'),
     to: path.join(config[env].assetsRoot, 'fonts')
-  }{{#sitemap}}, {
+  }, {
     from: path.join(config.paths.src, 'html/sitemap.xml'),
     to: path.join(config.paths.views, 'sitemap.xml')
-  }{{/sitemap}}])
+  }, {
+    from: path.join(config.paths.src, 'html/robots.txt'),
+    to: path.join(config.paths.views, 'robots.txt')
+  }])
 }
 
 exports.safeRm = function (_path) {

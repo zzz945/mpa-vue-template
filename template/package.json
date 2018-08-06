@@ -42,7 +42,7 @@
     "glob": "7.1.1",
     "http-proxy-middleware": "0.17.4",
     "jade": "1.11.0",
-    "jade-url-replace-loader": "^1.0.4",
+    "jade-url-replace-loader": "^1.0.5",
     "less-loader": "4.0.3",
     "morgan": "1.8.1",
     "object-assign": "4.1.1",
