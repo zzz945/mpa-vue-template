@@ -21,17 +21,19 @@ const envconfigs = {
   },
   alias: {
     '@': path.resolve(__dirname, '../src'),
-    "pages": path.resolve(__dirname, '../src/js/pages'),
-    "components": path.resolve(__dirname, '../src/js/components'),
-    "api": path.resolve(__dirname, '../src/js/api'),
-    "utils": path.resolve(__dirname, '../src/js/utils'),
-    "store": path.resolve(__dirname, '../src/js/store')
+    "pages": path.resolve(__dirname, '../src/pages'),
+    "components": path.resolve(__dirname, '../src/components'),
+    "api": path.resolve(__dirname, '../src/common/js/api'),
+    "utils": path.resolve(__dirname, '../src/common/js/utils'),
+    "img": path.resolve(__dirname, '../src/common/img'),
+    "fonts": path.resolve(__dirname, '../src/common/fonts'),
+    "common": path.resolve(__dirname, '../common'),
   },
   prod: {
     env: {
       NODE_ENV: '"production"'
     },
-    port: {{ port }},
+    port: 8080,
     assetsRoot: path.resolve(__dirname, buildPath, 'prod'),
     assetsPublicPath: '/static/'
   },
@@ -39,7 +41,7 @@ const envconfigs = {
     env: {
       NODE_ENV: '"development"'
     },
-    port: {{ port }},
+    port: 8080,
     assetsRoot: path.resolve(__dirname, buildPath, 'dev'),
     assetsPublicPath: '/static/',
   }

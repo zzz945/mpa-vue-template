@@ -3,7 +3,7 @@
     .dialog-content
       h1
         img.ico(v-if="type", :src="typeImg")
-        span.txt {{title}}
+        span.txt 
       p(v-if="message[0]==='<'", v-html="message")
       p(v-else, v-text="message")
     span(slot="footer", class="dialog-footer")
@@ -12,7 +12,7 @@
         :class="'btn-' + buttons.length",
         :size="btnSize",
         key="$index",
-        :type="btn.type", @click="action(btn.name)") {{btn.text}}
+        :type="btn.type", @click="action(btn.name)") 
 </template>
 <style lang="stylus">
 .message-dialog-v1

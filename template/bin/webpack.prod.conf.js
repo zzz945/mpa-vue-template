@@ -8,7 +8,7 @@ var ManifestPlugin = require('webpack-manifest-plugin')
 var assetsPublicPath = config.prod.assetsPublicPath
 var plugins = baseWebpackConfigs[0].plugins || []
 var manifest = new ManifestPlugin({
-  fileName: 'manifest-js.json',
+  fileName: 'js/manifest-js.json',
   basePath: assetsPublicPath,
    /**
     给js 文件加上 ?v= 哈希值,
@@ -39,7 +39,7 @@ if (process.env.HOSTALIAS) {
 
 plugins = baseWebpackConfigs[1].plugins || []
 manifest = new ManifestPlugin({
-  fileName: 'manifest-stylus.json',
+  fileName: 'css/manifest-stylus.json',
   basePath: assetsPublicPath,
   /**
     给css 文件加上 ?v= 哈希值,

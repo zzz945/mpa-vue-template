@@ -1,7 +1,7 @@
 {
-  "name": "{{ name }}",
+  "name": "image-test",
   "version": "1.0.0",
-  "description": "{{ description }}",
+  "description": "A Vue.js project",
   "main": "app.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development WEBPACK=css,html node ./bin/build.js",
@@ -11,8 +11,8 @@
     "release": "cross-env NODE_ENV=production node ./bin/build.js",
     "webpack-watch": "cross-env NODE_ENV=development webpack --watch --config ./bin/webpack.dev.conf.js"
   },
-  "author": "{{ author }}",
-  "license": "{{ license }}",
+  "author": "zhangdaiyan <zhangdaiyan@vipkid.com.cn>",
+  "license": "MIT",
   "devDependencies": {
     "@kazupon/vue-i18n-loader": "0.1.1",
     "babel-cli": "6.24.1",

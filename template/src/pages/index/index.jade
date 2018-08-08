@@ -1,18 +1,16 @@
-extends _base
+extends ./_base
 
 block meta
-  +locale()
   +favicon()
   +analytics()
   +meta-seo()
   if useLs
     if isdev
-      include _seed
+      include ./_seed
     else
-      include _seed-min
+      include ./_seed-min
 
-block libcss
-  link(rel="stylesheet" href="/static/css/common/common.css")
+//- block libcss
 
 block css
   link(rel="stylesheet" href="/static/css/index.css")

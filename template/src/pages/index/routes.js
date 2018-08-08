@@ -1,5 +1,5 @@
 
-import Index from './pages/Index.vue'
+import Index from './hello/Index.vue'
 export default [
   { path: '/', component: Index },
 ]

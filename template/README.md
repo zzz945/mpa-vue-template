@@ -1,6 +1,6 @@
-# {{ name }}
+# image-test
 
-> {{ description }}
+> A Vue.js project
 
 ## Build Setup
 

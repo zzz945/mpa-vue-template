@@ -36,6 +36,7 @@ configs.push({
     publicPath: config[env].assetsPublicPath
   },
   entry: utils.getEntries(['.js'], {
+    relativePublicPath: 'js/',
     includes: process.env.WEBPACKINCLUDES,
     excludes: process.env.WEBPACKEXCLUDES
   }),
@@ -63,11 +64,13 @@ configs.push({
   name: ' Stylesheet '.cyan.bold.inverse,
   target: 'web',
   context: config.paths.root,
-  entry: utils.getEntries(['.styl']),
+  entry: utils.getEntries(['.styl'], {
+    relativePublicPath: 'css/'
+  }),
   output: {
     path: config[env].assetsRoot,
     filename: env == 'dev' ? '[name].css' : '[name]-[chunkhash].css',
-    publicPath: config.dev.assetsPublicPath
+    publicPath: config[env].assetsPublicPath
   },
   resolve: {
     modules: ["node_modules"]
@@ -79,18 +82,14 @@ configs.push({
 })
 
 // jade
-const jadeLoaderAndPlugins = utils.getJadeLoaderPluginMaybeWithPlugin(true, env)
+const jadeLoaderAndPlugins = utils.getJadeLoader(env)
 configs.push({
   name: ' Jade '.magenta.bold.inverse,
   target: 'node',
   context: config.paths.root,
-  entry: utils.getEntries(['.jade'], {
-    noskip: true,
-    verbose: true,
-    baseDir: path.join(config.paths.src, 'html')
-  }),
+  entry: utils.getJadeEntries(['.jade']),
   output: {
-    path: path.resolve(config.paths.root, 'views'),
+    path: path.resolve(config.paths.root, 'views/'),
     filename: '[name].jade',
     publicPath: config[env].assetsPublicPath
   },

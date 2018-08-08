@@ -4,8 +4,8 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import VueI18n from 'vue-i18n'
 import App from './App.vue'
-import routes from './_routes.js'
-import modules from './store'
+import routes from './routes.js'
+import modules from './store.js'
 import 'utils/_interceptors.js'
 window.$LB = window.$LB || {}
 

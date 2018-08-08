@@ -9,8 +9,7 @@ const useragent = require('express-useragent')
 const env = process.env.NODE_ENV === 'development' ? 'dev' : 'prod'
 const utils = require('./bin/utils.js')
 // const proxy = require('./proxy.js')
-{{#useproxy}}
-const proxy = require('./proxy.js'){{/useproxy}}
+const proxy = require('./proxy.js')
 const config = require('./bin/config.js')
 const PackageConfig = require('./package.json')
 const staticPath = config[env].assetsRoot
@@ -41,8 +40,7 @@ if (env === 'dev') {
   app.use(require('./mock'))
 }
 // proxy(app)
-{{#useproxy}}
-proxy(app){{/useproxy}}
+proxy(app)
 app.use(useragent.express())
 app.use(cookieParser())
 app.use(bodyParser.json())
@@ -52,12 +50,11 @@ app.use(bodyParser.urlencoded({
 /* server static files */
 app.use('/static', express.static(staticPath))
 
-{{#sitemap}}
 /* sitemap */
-app.get('/sitemap.xml', function (req, res) {
-  res.set('Content-Type', 'application/xml')
-  res.sendFile(config.paths.views + '/sitemap.xml')
-}){{/sitemap}}
+// app.get('/sitemap.xml', function (req, res) {
+//   res.set('Content-Type', 'application/xml')
+//   res.sendFile(config.paths.views + '/sitemap.xml')
+// })
 
 /* middleware */
 require('./middlewares')(app)

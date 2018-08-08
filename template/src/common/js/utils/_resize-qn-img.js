@@ -1,5 +1,5 @@
 import dummy from 'utils/_1px_transparent_gif.js'
-const CdnHost = 'files.{{host}}.com'
+const CdnHost = 'files..com'
 /**
  *
  * @param {String} url image url on Qiniu CDN

@@ -22,6 +22,7 @@ module.exports = function (app, staticPath) {
       app.use(require("webpack-dev-middleware")(compiler, {
         noInfo: false,
         publicPath: '/static/',
+        log: console.log,
         stats: {
           colors: true,
           chunks: false

@@ -1,6 +1,6 @@
 [{
   "script": "app.js",
-  "name": "{{name}}",
+  "name": "image-test",
   "exec_mode": "cluster",
   "instances": 0,
   "env": {

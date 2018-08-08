@@ -11,7 +11,7 @@
         <p>
           <i class="el-message__icon" :class="iconClass" v-if="iconClass"></i>
           <span v-if="messageHTML" v-html="messageHTML"></span>
-          <span v-else>{{ message }}</span>
+          <span v-else></span>
         </p>
         <div v-if="showClose" class="el-message__closeBtn el-icon-close" @click="close"></div>
       </div>
